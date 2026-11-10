@@ -2,9 +2,9 @@ name: DevSecOps — Snyk SCA
 
 on:
  push:
- branches: [main, develop]
+   branches: [main, develop]
  pull_request:
- branches: [main]
+   branches: [main]
 
 jobs:
   snyk-scan:
@@ -27,7 +27,8 @@ jobs:
           args: --severity-threshold=high
 
       - name: Snyk Monitor
+        if: github.ref == 'refs/heads/main'
         run: npx snyk monitor
         env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        if: github.ref == 'refs/heads/main'
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
