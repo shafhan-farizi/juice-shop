@@ -21,7 +21,7 @@ jobs:
       - name: Install Yarn & Build Dependency Tree
         run: |
           npm install -g yarn
-          yarn install
+          yarn install --ignore-scripts
 
       - name: Snyk SCA Scan
         uses: snyk/actions/node@master
